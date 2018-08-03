@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Blit</string>
+    <string name="choese_your_beginning_city">Choese your beginning City</string>
+    <string name="dummytext">DummyText</string>
 </resources>
