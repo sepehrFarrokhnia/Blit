@@ -6,7 +6,7 @@ public class Ticket {
     private long price;
     private String detail;
     private City destinationCity;
-    private City beginingCity;
+    private City beginningCity;
     private Date date;
     private String company;
     public long getPrice() {
@@ -34,11 +34,11 @@ public class Ticket {
     }
 
     public City getBeginingCity() {
-        return beginingCity;
+        return beginningCity;
     }
 
     public void setBeginingCity(City beginingCity) {
-        this.beginingCity = beginingCity;
+        this.beginningCity = beginingCity;
     }
 
     public Date getDate() {
