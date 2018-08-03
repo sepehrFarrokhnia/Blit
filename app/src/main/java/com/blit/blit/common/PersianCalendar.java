@@ -20,7 +20,7 @@ public class PersianCalendar {
         else if(diff_sec < 3600*24)
             return String.valueOf(diff_sec/3600) + " ساعت پیش";
 
-        int diff_day = getDiffrentDayFromToday(persianCalendar.year, persianCalendar.month, persianCalendar.day);
+        int diff_day = getDifferentDayFromToday(persianCalendar.year, persianCalendar.month, persianCalendar.day);
         if(diff_day == 0)
             return "امروز";
         else if(diff_day == 1)
@@ -36,7 +36,7 @@ public class PersianCalendar {
                     ;
     }
 
-    public static int getDiffrentDayFromToday(int year, int month, int day)
+    public static int getDifferentDayFromToday(int year, int month, int day)
     {
         PersianCalendar persianCalendar = new PersianCalendar(new Date(0));
         int sum = 0;
@@ -53,7 +53,7 @@ public class PersianCalendar {
         int year = Integer.valueOf(date.substring(0, 4));
         int month = Integer.valueOf(date.substring(4,6));
         int day = Integer.valueOf(date.substring(6,8));
-        int diff = getDiffrentDayFromToday(year, month, day);
+        int diff = getDifferentDayFromToday(year, month, day);
         if(diff == 0)
             return "امروز";
         else if(diff == 1)
@@ -107,8 +107,6 @@ public class PersianCalendar {
             func1();
         else
             func2();
-//        strMonth = monthNames[month-1];
-//        strWeekDay = weekDayNames[WeekDay];
     }
 
     private void func1()
