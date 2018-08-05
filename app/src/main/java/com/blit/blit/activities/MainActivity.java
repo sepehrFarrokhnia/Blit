@@ -20,14 +20,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        registerParsers();
     }
 
     /**
      * register available parsers to parsers list
      */
-    private void registerParsers()
-    {
+    private void registerParsers() {
         parsers.add(new SampleParser());
     }
 
@@ -45,5 +44,6 @@ public class MainActivity extends AppCompatActivity {
             tickets.addAll(parser.getTickets(c1, c2, calendar));
         return tickets;
     }
+
 
 }

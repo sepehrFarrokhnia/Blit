@@ -14,7 +14,7 @@ import java.util.GregorianCalendar;
 import java.util.Random;
 
 /**
- * sample parser porpuse is help with testing UI components
+ * sample parser propose is help with testing UI components
  */
 public class SampleParser extends Parser {
     @Override
