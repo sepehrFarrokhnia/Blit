@@ -9,6 +9,7 @@ import android.widget.LinearLayout;
 import com.blit.blit.Adapters.BlitRecyclerViewAdapter;
 import com.blit.blit.R;
 import com.blit.blit.common.Parser;
+import com.blit.blit.common.PersianCalendar;
 import com.blit.blit.models.City;
 import com.blit.blit.models.Ticket;
 import com.blit.blit.parsers.SampleParser;
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         registerParsers();
+        initRecyclerView();
     }
 
     /**
@@ -53,9 +55,9 @@ public class MainActivity extends AppCompatActivity {
     private void initRecyclerView(){
         RecyclerView ticketRecyclerView=findViewById(R.id.blitRecyclerView);
         LinearLayoutManager ticketLinerlayout = new LinearLayoutManager(this,LinearLayout.VERTICAL,false);
-        adapter = new BlitRecyclerViewAdapter(fetchTickets( ));
-
-
+        adapter = new BlitRecyclerViewAdapter(fetchTickets(SearchActivity.cities.get(0),SearchActivity.cities.get(1),null));
+        ticketRecyclerView.setAdapter(adapter);
+        ticketRecyclerView.setLayoutManager(ticketLinerlayout);
     }
 
 }

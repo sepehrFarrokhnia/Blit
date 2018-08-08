@@ -46,7 +46,7 @@ public class BlitRecyclerViewAdapter extends RecyclerView.Adapter<BlitRecyclerVi
                 break;
             case TRAIN:ticketViewHolder.ticketType.setText(R.string.Train);
                 break;
-            case AIRPLANE:ticketViewHolder.ticketType.setText(R.string.Airplane);
+            case AIRPLANE:ticketViewHolder.ticketType.setText(R.string.AirPlane);
                 break;
         }
     }
