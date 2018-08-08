@@ -13,12 +13,14 @@ import com.blit.blit.common.Parser;
 import com.blit.blit.dao.CityDao;
 import com.blit.blit.models.City;
 import com.blit.blit.models.Ticket;
-import com.blit.blit.parsers.SampleParser;
+import com.blit.blit.parsers.SampleAirplaneParser;
+import com.blit.blit.parsers.SampleBusParser;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
+    private static final String TAG = MainActivity.class.getName();
 
     public static final String BEGINNING_CITY = "c1";
     public static final String DESTINATION_CITY = "c2";
@@ -26,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     public static CityDao cityDao = new CityDao();
 
     private ArrayList<Parser> parsers = new ArrayList<>();
+
     private BlitRecyclerViewAdapter adapter;
 
     private City beginningCity;
@@ -39,11 +42,15 @@ public class MainActivity extends AppCompatActivity {
         String cityShortName2 = getIntent().getStringExtra(DESTINATION_CITY);
         beginningCity = cityDao.findCityByShortName(cityShortName1);
         destinationCity = cityDao.findCityByShortName(cityShortName2);
-        Log.d(TAG, "onCreate: ");
-        
-        registerParsers();
+//        beginningCity = cityDao.getCities().get(0);
+//        destinationCity = cityDao.getCities().get(1);
 
         initRecyclerView();
+
+        registerParsers();
+
+
+        adapter.setTickets(fetchTickets(beginningCity, destinationCity, null));
         adapter.notifyDataSetChanged();
     }
 
@@ -51,7 +58,8 @@ public class MainActivity extends AppCompatActivity {
      * register available parsers to parsers list
      */
     private void registerParsers() {
-        parsers.add(new SampleParser());
+        parsers.add(new SampleAirplaneParser());
+        parsers.add(new SampleBusParser());
     }
 
     /**
@@ -63,18 +71,20 @@ public class MainActivity extends AppCompatActivity {
      */
     private ArrayList<Ticket> fetchTickets(City c1, City c2, Calendar calendar)
     {
-        ArrayList<Ticket> tickets = new ArrayList<>();
-        for(Parser parser: parsers)
-            tickets.addAll(parser.getTickets(c1, c2, calendar));
-        return tickets;
+        ArrayList<Ticket> allTickets = new ArrayList<>();
+        for(Parser p:parsers)
+        {
+            ArrayList<Ticket> tempTickets = p.getTickets(beginningCity, destinationCity, null);
+            allTickets.addAll(tempTickets);
+        }
+        return allTickets;
     }
     private void initRecyclerView(){
+        adapter = new BlitRecyclerViewAdapter();
         RecyclerView ticketRecyclerView=findViewById(R.id.blitRecyclerView);
         LinearLayoutManager ticketLinearLayout = new LinearLayoutManager(this,LinearLayout.VERTICAL,false);
         ticketRecyclerView.setAdapter(adapter);
         ticketRecyclerView.setLayoutManager(ticketLinearLayout);
-        adapter = new BlitRecyclerViewAdapter(fetchTickets(beginningCity,destinationCity,null));
-
     }
 
 }

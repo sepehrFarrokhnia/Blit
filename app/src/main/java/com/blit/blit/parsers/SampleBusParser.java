@@ -16,7 +16,7 @@ import java.util.Random;
 /**
  * sample parser propose is help with testing UI components
  */
-public class SampleParser extends Parser {
+public class SampleBusParser extends Parser {
     @Override
     public String getSearchPath(City c1, City c2, Calendar calendar) {
         return null;
@@ -34,6 +34,8 @@ public class SampleParser extends Parser {
             ticket.setDetail("it's sample");
             ticket.setPrice(new Random().nextInt(200000));
             ticket.setCalendar(calendar);
+            ticket.setTicketType(Ticket.TicketType.BUS);
+            tickets.add(ticket);
         }
         return tickets;
     }
