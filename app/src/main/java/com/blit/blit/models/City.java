@@ -37,8 +37,7 @@ public class City {
     }
 
     @Override
-    public String toString()
-    {
-        return getFaName();
+    public String toString() {
+        return faName;
     }
 }

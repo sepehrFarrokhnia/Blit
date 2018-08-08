@@ -2,7 +2,11 @@ package com.blit.blit.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.widget.LinearLayout;
 
+import com.blit.blit.Adapters.BlitRecyclerViewAdapter;
 import com.blit.blit.R;
 import com.blit.blit.common.Parser;
 import com.blit.blit.models.City;
@@ -15,6 +19,8 @@ import java.util.Calendar;
 public class MainActivity extends AppCompatActivity {
 
     ArrayList<Parser> parsers = new ArrayList<>();
+    BlitRecyclerViewAdapter adapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +50,12 @@ public class MainActivity extends AppCompatActivity {
             tickets.addAll(parser.getTickets(c1, c2, calendar));
         return tickets;
     }
+    private void initRecyclerView(){
+        RecyclerView ticketRecyclerView=findViewById(R.id.blitRecyclerView);
+        LinearLayoutManager ticketLinerlayout = new LinearLayoutManager(this,LinearLayout.VERTICAL,false);
+        adapter = new BlitRecyclerViewAdapter(fetchTickets( ));
 
+
+    }
 
 }

@@ -10,32 +10,21 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.blit.blit.R;
+import com.blit.blit.models.Ticket;
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class BlitRecyclerViewAdapter extends RecyclerView.Adapter<BlitRecyclerViewAdapter.TicketViewHolder> {
-    private ArrayList<String> prices =new ArrayList<>();
-    private ArrayList<String> ticketImageurls =new ArrayList<>();
-    private ArrayList<String> details =new ArrayList<>();
-    private ArrayList<String> destinationCity =new ArrayList<>();
-    private ArrayList<String> beginningCity =new ArrayList<>();
-    private ArrayList<String> calendar =new ArrayList<>();
-    private ArrayList<String> ticketType =new ArrayList<>();
-    private ArrayList<String> ticketCompony =new ArrayList<>();
-    Context context ;
+    private ArrayList<Ticket> tickets = new ArrayList<>();
 
-    public BlitRecyclerViewAdapter(ArrayList<String> prices, ArrayList<String> ticketImageurls, ArrayList<String> details, ArrayList<String> destinationCity, ArrayList<String> beginningCity, ArrayList<String> calendar, ArrayList<String> ticketType, Context context) {
-        this.prices = prices;
-        this.ticketImageurls = ticketImageurls;
-        this.details = details;
-        this.destinationCity = destinationCity;
-        this.beginningCity = beginningCity;
-        this.calendar = calendar;
-        this.ticketType = ticketType;
-        this.context = context;
+    public BlitRecyclerViewAdapter(ArrayList<Ticket> tickets) {
+        this.tickets = tickets;
     }
+
     @NonNull
     @Override
     public TicketViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
@@ -45,18 +34,26 @@ public class BlitRecyclerViewAdapter extends RecyclerView.Adapter<BlitRecyclerVi
     }
     @Override
     public void onBindViewHolder(@NonNull TicketViewHolder ticketViewHolder, int i) {
-        ticketViewHolder.detail.setText(details.get(i));
-        ticketViewHolder.price.setText(prices.get(i));
-        ticketViewHolder.destinationCity.setText(destinationCity.get(i));
-        ticketViewHolder.beginningCity.setText(beginningCity.get(i));
-        ticketViewHolder.calendar.setText(calendar.get(i));
-        ticketViewHolder.ticketType.setText(ticketType.get(i));
-        ticketViewHolder.company.setText(ticketCompony.get(i));
+        Ticket ticket = tickets.get(i);
+        ticketViewHolder.price.setText(Long.toString(ticket.getPrice()));
+        ticketViewHolder.detail.setText(ticket.getDetail());
+        ticketViewHolder.destinationCity.setText(ticket.getDestinationCity().toString());
+        ticketViewHolder.beginningCity.setText(ticket.getBeginningCity().toString());
+        ticketViewHolder.calendar.setText((ticket.getCalendar()).toString());
+        ticketViewHolder.company.setText(ticket.getCompany());
+        switch (ticket.getTicketType()){
+            case BUS: ticketViewHolder.ticketType.setText(R.string.Bus);
+                break;
+            case TRAIN:ticketViewHolder.ticketType.setText(R.string.Train);
+                break;
+            case AIRPLANE:ticketViewHolder.ticketType.setText(R.string.Airplane);
+                break;
+        }
     }
 
     @Override
     public int getItemCount() {
-        return beginningCity.size();
+        return tickets.size() ;
     }
 
     public class TicketViewHolder extends RecyclerView.ViewHolder {
@@ -82,7 +79,6 @@ public class BlitRecyclerViewAdapter extends RecyclerView.Adapter<BlitRecyclerVi
             ticketType=itemView.findViewById(R.id.ticketTypeText);
             ticketImage=itemView.findViewById(R.id.ticketImageView);
             detail=itemView.findViewById(R.id.detailText);
-
         }
     }
 }
