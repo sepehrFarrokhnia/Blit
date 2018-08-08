@@ -8,8 +8,6 @@
     <string name="beginningCity">مشهد</string>
     <string name="destinationCity">تهران</string>
     <string name="searchButton">کو بِبینُم؟</string>
-    <string name="Bus">اتوبوس</string>
-    <string name="Airplane">هواپیما</string>
-    <string name="Train">قطار</string>
-
+    <string name="cityNotFound">شهرت رِ پیدا نَکِردُم</string>
+    <string name="destinationCityAndBeginningCityAreSame">می‌خِی از همی جِ بیِی همی جِ؟</string>
 </resources>
