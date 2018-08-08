@@ -26,6 +26,8 @@
         android:fontFamily="@font/iran_sans_mobile"
         android:textAlignment="center"
         android:hint="@string/beginningCity"
+        android:maxLines="1"
+        android:maxLength="15"
         />
 
     <TextView
@@ -48,6 +50,8 @@
         android:layout_centerHorizontal="true"
         android:textAlignment="center"
         android:hint="@string/destinationCity"
+        android:maxLines="1"
+        android:maxLength="15"
         />
 
     <Button

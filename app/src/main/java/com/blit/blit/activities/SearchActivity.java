@@ -1,5 +1,6 @@
 package com.blit.blit.activities;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -16,7 +17,6 @@ import java.util.ArrayList;
 
 public class SearchActivity extends AppCompatActivity {
     private static final String TAG = SearchActivity.class.getName();
-    public static ArrayList<City> cities = new ArrayList<>();
 
     private AutoCompleteTextView beginningView;
     private AutoCompleteTextView destinationView;
@@ -26,7 +26,6 @@ public class SearchActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
-        loadCities();
         beginningView = findViewById(R.id.searchBeginningCity);
         destinationView = findViewById(R.id.searchDestinationCity);
         searchButton = findViewById(R.id.ticketSearchButton);
@@ -34,12 +33,11 @@ public class SearchActivity extends AppCompatActivity {
         setupAutoTextView(beginningView);
         setupAutoTextView(destinationView);
 
-
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                City c1 = findCityByName(beginningView.getText().toString());
-                City c2 = findCityByName(destinationView.getText().toString());
+                City c1 = MainActivity.cityDao.findCityByFaName(beginningView.getText().toString());
+                City c2 = MainActivity.cityDao.findCityByFaName(destinationView.getText().toString());
                 if(c1 == null)
                     beginningView.setError(getString(R.string.cityNotFound));
                 else if(c2 == null)
@@ -48,6 +46,10 @@ public class SearchActivity extends AppCompatActivity {
                     destinationView.setError(getString(R.string.destinationCityAndBeginningCityAreSame));
                 else
                 {
+                    Intent intent = new Intent(view.getContext(), MainActivity.class);
+                    intent.putExtra(MainActivity.BEGINNING_CITY, c1.getShortName());
+                    intent.putExtra(MainActivity.DESTINATION_CITY, c2.getShortName());
+                    startActivity(intent);
 
                 }
             }
@@ -59,36 +61,8 @@ public class SearchActivity extends AppCompatActivity {
      */
     void setupAutoTextView(AutoCompleteTextView view)
     {
-        ArrayAdapter<City> adapter = new ArrayAdapter<> (this,android.R.layout.simple_list_item_1,cities);
+        ArrayAdapter<City> adapter = new ArrayAdapter<> (this,android.R.layout.simple_list_item_1,MainActivity.cityDao.getCities());
         view.setAdapter(adapter);
-    }
-
-    /**
-     * load cities information
-     */
-    public void loadCities(){
-        City mashhad = new City("MHD","مشهد","Mashhad");
-        City isfahan = new City("IFN","اصفهان","Isfahan");
-        City shiraz = new City("SYZ","شیراز","Shiraz");
-        City tehran = new City("THR","تهران","Tehran");
-        cities.add(mashhad);
-        cities.add(tehran);
-        cities.add(isfahan);
-        cities.add(shiraz);
-
-    }
-
-    /**
-     * find city by faName
-     * @param name faName of city
-     * @return City Object otherwise null
-     */
-    public City findCityByName(String name)
-    {
-        for(City c:cities)
-            if(c.getFaName().equals(name))
-                return c;
-        return null;
     }
 
 }

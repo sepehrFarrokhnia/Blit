@@ -4,12 +4,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.widget.LinearLayout;
 
-import com.blit.blit.Adapters.BlitRecyclerViewAdapter;
+import com.blit.blit.adapters.BlitRecyclerViewAdapter;
 import com.blit.blit.R;
 import com.blit.blit.common.Parser;
-import com.blit.blit.common.PersianCalendar;
+import com.blit.blit.dao.CityDao;
 import com.blit.blit.models.City;
 import com.blit.blit.models.Ticket;
 import com.blit.blit.parsers.SampleParser;
@@ -19,16 +20,31 @@ import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
 
-    ArrayList<Parser> parsers = new ArrayList<>();
-    BlitRecyclerViewAdapter adapter;
+    public static final String BEGINNING_CITY = "c1";
+    public static final String DESTINATION_CITY = "c2";
 
+    public static CityDao cityDao = new CityDao();
+
+    private ArrayList<Parser> parsers = new ArrayList<>();
+    private BlitRecyclerViewAdapter adapter;
+
+    private City beginningCity;
+    private City destinationCity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        String cityShortName1 = getIntent().getStringExtra(BEGINNING_CITY);
+        String cityShortName2 = getIntent().getStringExtra(DESTINATION_CITY);
+        beginningCity = cityDao.findCityByShortName(cityShortName1);
+        destinationCity = cityDao.findCityByShortName(cityShortName2);
+        Log.d(TAG, "onCreate: ");
+        
         registerParsers();
+
         initRecyclerView();
+        adapter.notifyDataSetChanged();
     }
 
     /**
@@ -54,10 +70,11 @@ public class MainActivity extends AppCompatActivity {
     }
     private void initRecyclerView(){
         RecyclerView ticketRecyclerView=findViewById(R.id.blitRecyclerView);
-        LinearLayoutManager ticketLinerlayout = new LinearLayoutManager(this,LinearLayout.VERTICAL,false);
-        adapter = new BlitRecyclerViewAdapter(fetchTickets(SearchActivity.cities.get(0),SearchActivity.cities.get(1),null));
+        LinearLayoutManager ticketLinearLayout = new LinearLayoutManager(this,LinearLayout.VERTICAL,false);
         ticketRecyclerView.setAdapter(adapter);
-        ticketRecyclerView.setLayoutManager(ticketLinerlayout);
+        ticketRecyclerView.setLayoutManager(ticketLinearLayout);
+        adapter = new BlitRecyclerViewAdapter(fetchTickets(beginningCity,destinationCity,null));
+
     }
 
 }

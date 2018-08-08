@@ -1,6 +1,5 @@
-package com.blit.blit.Adapters;
+package com.blit.blit.adapters;
 
-import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,10 +10,8 @@ import android.widget.TextView;
 
 import com.blit.blit.R;
 import com.blit.blit.models.Ticket;
-import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
