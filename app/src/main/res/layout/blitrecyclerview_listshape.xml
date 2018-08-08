@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:id="@+id/blitListShapeLayout">
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/ticketImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/ic_launcher_round"
+        app:civ_border_width="3sp"
+        app:civ_border_color="#f2f2f2"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/companyNameText"
+        android:text="@string/dummytext"
+        />
+
+    <TextView
+        android:id="@+id/startingTimeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/dummytext" />
+
+    <TextView
+        android:id="@+id/calendarText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/dummytext" />
+
+    <TextView
+        android:id="@+id/beginningCityText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/dummytext" />
+
+    <TextView
+        android:id="@+id/destinationCity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/dummytext" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/detailText"
+        android:text="@string/dummytext"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/priceText"
+        android:text="@string/dummytext"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ticketTypeText"
+        android:text="@string/dummytext"/>
+
+</LinearLayout>
