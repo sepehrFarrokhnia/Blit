@@ -2,6 +2,8 @@ package com.blit.blit.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -36,7 +38,18 @@ public class SearchActivity extends AppCompatActivity {
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                City c1 = findCityByName(beginningView.getText().toString());
+                City c2 = findCityByName(destinationView.getText().toString());
+                if(c1 == null)
+                    beginningView.setError(getString(R.string.cityNotFound));
+                else if(c2 == null)
+                    destinationView.setError(getString(R.string.cityNotFound));
+                else if(c1 == c2)
+                    destinationView.setError(getString(R.string.destinationCityAndBeginningCityAreSame));
+                else
+                {
 
+                }
             }
         });
     }
