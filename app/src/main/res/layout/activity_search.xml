@@ -10,45 +10,57 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/form"
-        android:fontFamily="@font/iran_sans_mobile"
         android:layout_toStartOf="@id/searchBeginningCity"
         android:layout_alignBottom="@id/searchBeginningCity"
+        android:textColor="@color/primaryText"
+        android:fontFamily="@font/iran_sans_mobile"
         />
 
     <AutoCompleteTextView
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:id="@+id/searchDestinationCity"
         android:layout_centerInParent="true"
         android:layout_centerHorizontal="true"
+        android:textColor="@color/primaryText"
+        android:fontFamily="@font/iran_sans_mobile"
+        android:textAlignment="center"
         android:hint="@string/beginningCity"
         />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/to"
         android:fontFamily="@font/iran_sans_mobile"
+        android:text="@string/to"
+        android:textColor="@color/primaryText"
         android:layout_toStartOf="@id/searchDestinationCity"
         android:layout_alignBottom="@id/searchDestinationCity"
         />
 
     <AutoCompleteTextView
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
+        android:fontFamily="@font/iran_sans_mobile"
         android:layout_height="wrap_content"
         android:id="@+id/searchBeginningCity"
+        android:textColor="@color/primaryText"
         android:layout_above="@id/searchDestinationCity"
         android:layout_centerHorizontal="true"
-        android:hint="@string/beginningCity"
+        android:textAlignment="center"
+        android:hint="@string/destinationCity"
         />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/iran_sans_mobile"
+        android:textColor="@color/background"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/searchDestinationCity"
         android:layout_margin="15dp"
+        android:background="@color/colorAccent"
         android:text="@string/searchButton"
+        android:id="@+id/ticketSearchButton"
         />
 
 </RelativeLayout>

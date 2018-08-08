@@ -5,7 +5,7 @@
     <string name="choose_your_destination_city">choose_your_destination_city</string>
     <string name="form">از:</string>
     <string name="to">به:</string>
-    <string name="beginningCity">مِشد</string>
-    <string name="destinationCity">تِرون</string>
+    <string name="beginningCity">مشهد</string>
+    <string name="destinationCity">تهران</string>
     <string name="searchButton">کو بِبینُم؟</string>
 </resources>
