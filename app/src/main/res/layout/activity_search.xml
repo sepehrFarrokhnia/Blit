@@ -1,20 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layoutDirection="rtl"
     tools:context=".activities.SearchActivity">
 
-    <EditText
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/bCAutoComplete"
-        android:background="#f2f2f2"
-        android:hint="@string/choose_your_beginning_city"
-        android:layout_marginTop="100dp"
-        android:layout_marginStart="100dp"
-        android:maxLines="1"
-        android:inputType="text"/>
+        android:text="@string/form"
+        android:fontFamily="@font/iran_sans_mobile"
+        android:layout_toStartOf="@id/searchBeginningCity"
+        android:layout_alignBottom="@id/searchBeginningCity"
+        />
 
+    <AutoCompleteTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/searchDestinationCity"
+        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
+        android:hint="@string/beginningCity"
+        />
 
-</LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/to"
+        android:fontFamily="@font/iran_sans_mobile"
+        android:layout_toStartOf="@id/searchDestinationCity"
+        android:layout_alignBottom="@id/searchDestinationCity"
+        />
+
+    <AutoCompleteTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/searchBeginningCity"
+        android:layout_above="@id/searchDestinationCity"
+        android:layout_centerHorizontal="true"
+        android:hint="@string/beginningCity"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/searchDestinationCity"
+        android:layout_margin="15dp"
+        android:text="@string/searchButton"
+        />
+
+</RelativeLayout>
