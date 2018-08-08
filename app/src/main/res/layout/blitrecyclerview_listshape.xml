@@ -20,46 +20,46 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/companyNameText"
-        android:text="@string/dummytext"
+        android:text="@string/dummyText"
         />
 
     <TextView
         android:id="@+id/startingTimeText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/dummytext" />
+        android:text="@string/dummyText" />
 
     <TextView
         android:id="@+id/calendarText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/dummytext" />
+        android:text="@string/dummyText" />
 
     <TextView
         android:id="@+id/beginningCityText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/dummytext" />
+        android:text="@string/dummyText" />
 
     <TextView
         android:id="@+id/destinationCity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/dummytext" />
+        android:text="@string/dummyText" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/detailText"
-        android:text="@string/dummytext"/>
+        android:text="@string/dummyText"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/priceText"
-        android:text="@string/dummytext"/>
+        android:text="@string/dummyText"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/ticketTypeText"
-        android:text="@string/dummytext"/>
+        android:text="@string/dummyText"/>
 
 </LinearLayout>
